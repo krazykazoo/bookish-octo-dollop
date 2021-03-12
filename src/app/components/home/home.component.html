@@ -1,0 +1,11 @@
+<div class='home'>
+    <div class='home-title'>NASA Mars Rover Photos</div>
+    <div class='date-form'>
+        <div class='form-field'>
+            <div class='field-name'>Select a date</div>
+            <input class='date-input' type="date" [(ngModel)]='date'>
+        </div>
+        <div class='search-button' (click)='getPhotos()'>Search</div>
+    </div>
+    <app-photos></app-photos>
+</div>

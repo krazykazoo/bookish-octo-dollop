@@ -1,0 +1,7 @@
+<div *ngIf='photo; else errorBlock'>
+    <img src='{{photo.img_src}}' alt='{{photo.rover.name + " " + photo.camera.name + " " + photo.id}}'>
+</div>
+
+<ng-template #errorBlock>
+    <div>whoopsie</div>
+</ng-template>
