@@ -1,0 +1,52 @@
+@import '../../../styles.scss';
+
+.detail-page {
+    width: 60vw;
+    margin: 2rem auto;
+    padding-bottom: 3rem;
+}
+
+.detailed-photo {
+    @include flex-base(row);
+    width: 45vw;
+    height: 45vw;
+    margin: 0 auto;
+}
+
+.info {
+    @include flex-base(row);
+    margin: 1rem 3rem;
+}
+
+.rover-info {
+    @include flex-base(column);
+    justify-content: flex-start;
+    height: 10rem;
+}
+
+.photo-info {
+    @include flex-base(column);
+    justify-content: flex-start;
+    height: 10rem;
+
+}
+
+.info-title {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.info-details {
+    font-size: 1.1em;
+}
+
+.back-button {
+    @include button-base($primary, #fff);
+    margin: 0 auto;
+}
+
+.error-block {
+    @include flex-base(column);
+    margin: 4rem auto;
+}

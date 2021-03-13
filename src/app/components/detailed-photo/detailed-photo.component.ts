@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Photo from 'src/app/models/photo';
 import { NasaService } from 'src/app/services/nasa.service';
 
@@ -13,7 +13,7 @@ export class DetailedPhotoComponent implements OnInit {
   photos: Photo[];
   photo: Photo;
   id: number;
-  constructor(private readonly activatedRoute: ActivatedRoute, private readonly nasaService: NasaService) { }
+  constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute, private readonly nasaService: NasaService) { }
 
   ngOnInit(): void {
     this.nasaService.getPhotos().subscribe((photos: Photo[]) => {
@@ -29,14 +29,16 @@ export class DetailedPhotoComponent implements OnInit {
 
   filterPhotos() {
     let filteredPhotos = this.photos.filter(photo => photo.id == this.id);
-    console.log(this.photos)
     if (filteredPhotos.length === 1) {
       this.photo = filteredPhotos[0];
     }
     else {
-      //error state
+      this.photo = undefined;
     }
-    console.log(this.photo);
+  }
+
+  goBack() {
+    this.router.navigate(['']);
   }
 
 }

@@ -1,11 +1,20 @@
 <div class='home'>
     <div class='home-title'>NASA Mars Rover Photos</div>
+    <div class='date-info'>Most recent dates for rovers are as follows. Curiosity: 2021-03-12, Opportunity: 2018-06-11, Spirit: 2010-03-21</div>
     <div class='date-form'>
         <div class='form-field'>
-            <div class='field-name'>Select a date</div>
+            <div class='field-name'>Select a date:</div>
             <input class='date-input' type="date" [(ngModel)]='date'>
+        </div>
+        <div class='form-field'>
+            <div class='field-name'>Select a rover:</div>
+            <select class='select' (change)='roverSelect($event)'>
+                <option *ngFor='let roverOption of rovers' [value]='roverOption.name'>{{roverOption.name}}</option>
+            </select>
         </div>
         <div class='search-button' (click)='getPhotos()'>Search</div>
     </div>
-    <app-photos></app-photos>
+    <app-photos class='photoList'></app-photos>
+    <mat-spinner class='loader' *ngIf='loading'></mat-spinner>
+    <div *ngIf='morePages' class="search-button" (click)='loadMorePhotos()'>Load More</div>
 </div>

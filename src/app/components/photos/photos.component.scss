@@ -1,0 +1,15 @@
+@import '../../../styles.scss';
+
+.photos {
+    @include flex-base(row);
+    flex-wrap: wrap;
+
+}
+
+.photo {
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}

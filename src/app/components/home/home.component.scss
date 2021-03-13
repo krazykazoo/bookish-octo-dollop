@@ -3,7 +3,8 @@
 .home {
     @include flex-base(column);
     width: 60vw;
-    margin: 1rem auto 0 auto;
+    margin: 1rem auto 5rem auto;
+    padding-bottom: 2rem;
 }
 
 .home-title {
@@ -22,6 +23,8 @@
     @include flex-base(row);
     font-size: 1.25em;
     margin-bottom: 1rem;
+    width: 25rem;
+    justify-content: space-between;
 }
 
 .field-name {
@@ -30,19 +33,28 @@
 
 .date-input {
     font-size: 1em;
+    background: #fff;
 }
 
 .search-button {
-    width: fit-content;
-    padding: .5rem 1rem;
-    border-radius: .25rem;
-    box-shadow: 0 0 1rem .25rem rgba(0,0,0, .25);
-    background: $primary;
-    color: #fff;
-    font-size: 1.1em;
-    cursor: pointer;
+    @include button-base($primary, #fff);
+}
 
-    &:hover {
-        background: lighten($primary, 5%)
-    }
+.photo-list {
+    width: 60vw;
+    margin-bottom: 2rem;
+}
+
+.loader{
+    margin: 4rem;
+}
+
+.select {
+    font-size: 1em;
+    background: #fff;
+}
+
+.date-info {
+    font-size: 1em;
+    margin-bottom: 2rem;
 }
