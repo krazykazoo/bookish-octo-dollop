@@ -13,3 +13,10 @@
     border-radius: 2rem;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 900px) {
+    .photo {
+        width: 40vw;
+        height: 40vw;
+    }
+}

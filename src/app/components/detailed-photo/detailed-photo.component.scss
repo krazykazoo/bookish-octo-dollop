@@ -50,3 +50,29 @@
     @include flex-base(column);
     margin: 4rem auto;
 }
+
+
+@media only screen and (max-width: 900px) {
+    .detail-page {
+        width: $mobileWidth;
+        margin-top: 0;
+    }
+
+    .detailed-photo {
+        width: $mobileWidth;
+        height: $mobileWidth;
+    }
+
+    .info {
+        flex-direction: column;
+    }
+
+
+    .info-title {
+        font-size: 1em;
+    }
+
+    .error-block {
+        width: $width;
+    }
+}

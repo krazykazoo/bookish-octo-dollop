@@ -2,7 +2,7 @@
 
 .home {
     @include flex-base(column);
-    width: 60vw;
+    width: $width;
     margin: 1rem auto 5rem auto;
     padding-bottom: 2rem;
 }
@@ -57,4 +57,18 @@
 .date-info {
     font-size: 1em;
     margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .home {
+        width: $mobileWidth;
+    }
+
+    .form-field {
+        width: $mobileWidth;
+    }
+
+    .photo-list {
+        width: $mobileWidth;
+    }
 }
