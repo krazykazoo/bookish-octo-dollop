@@ -29,7 +29,6 @@ export class DetailedPhotoComponent implements OnInit {
   }
 
   filterPhotos(): void {
-    console.log(this.photos, this.id)
     const filteredPhotos = this.photos.filter(photo => photo.id == this.id);
     if (filteredPhotos.length === 1) {
       this.photo = filteredPhotos[0];
