@@ -1,5 +1,5 @@
-import Camera from "./camera";
-import Rover from "./rover";
+import Camera from './camera';
+import Rover from './rover';
 
 export default class Photo {
     id: number;

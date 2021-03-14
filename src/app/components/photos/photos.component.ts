@@ -21,7 +21,7 @@ export class PhotosComponent implements OnInit {
   }
 
 
-  goToPhoto(id: string) {
+  goToPhoto(id: string): void {
     this.router.navigate([`photo/${id}`]);
   }
 }

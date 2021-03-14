@@ -13,7 +13,8 @@ export class DetailedPhotoComponent implements OnInit {
   photos: Photo[];
   photo: Photo;
   id: number;
-  constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute, private readonly nasaService: NasaService) { }
+  constructor(private readonly router: Router, private readonly activatedRoute: ActivatedRoute,
+              private readonly nasaService: NasaService) { }
 
   ngOnInit(): void {
     this.nasaService.getPhotos().subscribe((photos: Photo[]) => {
@@ -22,13 +23,14 @@ export class DetailedPhotoComponent implements OnInit {
     });
 
     this.activatedRoute.params.subscribe((params) => {
-      this.id = params['id'];
+      this.id = params.id;
       this.filterPhotos();
     });
   }
 
-  filterPhotos() {
-    let filteredPhotos = this.photos.filter(photo => photo.id == this.id);
+  filterPhotos(): void {
+    console.log(this.photos, this.id)
+    const filteredPhotos = this.photos.filter(photo => photo.id == this.id);
     if (filteredPhotos.length === 1) {
       this.photo = filteredPhotos[0];
     }
@@ -37,7 +39,7 @@ export class DetailedPhotoComponent implements OnInit {
     }
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['']);
   }
 

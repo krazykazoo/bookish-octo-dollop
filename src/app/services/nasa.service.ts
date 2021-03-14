@@ -11,23 +11,23 @@ import Rover from '../models/rover';
 })
 export class NasaService {
 
-  $photos: BehaviorSubject<Photo[]> = new BehaviorSubject([]);
-  $loading: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  $morePages: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  page: number = 1;
-  rover: Rover = undefined;
+  private $photos: BehaviorSubject<Photo[]> = new BehaviorSubject([]);
+  private $loading: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private $morePages: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private page = 1;
+  private rover: Rover = undefined;
 
   constructor(private readonly http: HttpClient) { }
 
 
-  getPhotosFromCuriosityByDate(date: string, mode: string) : void {
+  getPhotosByDate(date: string, mode: string): void {
     this.$loading.next(true);
     if (mode === 'search') {
       this.$photos.next([]);
       this.page = 1;
     }
     else if (mode === 'more') {
-      this.page++
+      this.page++;
     }
     let url;
     if (this.rover.name === 'Curiosity') {
@@ -39,15 +39,14 @@ export class NasaService {
     else if (this.rover.name === 'Spirit') {
       url = environment.marsRoverSpiritUrl;
     }
-    console.log(url)
-    this.http.get<ApiResponse>(`${url}?earth_date=${date}&api_key=${environment.apiKey}&page=${this.page}`).subscribe((response: ApiResponse) => {
-
+    const urlWithParams = `${url}?earth_date=${date}&api_key=${environment.apiKey}&page=${this.page}`;
+    this.http.get<ApiResponse>(urlWithParams).subscribe((response: ApiResponse) => {
       if (this.page === 1) {
         this.$morePages.next(true);
         this.$photos.next(response.photos);
       }
       else {
-        this.$photos.next([...this.$photos.value, ...response.photos])
+        this.$photos.next([...this.$photos.value, ...response.photos]);
       }
       if (response.photos.length < 25) {
         this.$morePages.next(false);
@@ -59,23 +58,23 @@ export class NasaService {
     });
   }
 
-  getPhotos() : Observable<Photo[]> {
+  getPhotos(): Observable<Photo[]> {
     return this.$photos.asObservable();
   }
 
-  getLoading() {
+  getLoading(): Observable<boolean>  {
     return this.$loading.asObservable();
   }
 
-  getMorePagesStatus() {
+  getMorePagesStatus(): Observable<boolean>  {
     return this.$morePages.asObservable();
   }
 
-  setRover(rover: Rover) {
+  setRover(rover: Rover): void {
     this.rover = rover;
   }
 
-  getRover() {
+  getRover(): Rover {
     return this.rover;
   }
 }
